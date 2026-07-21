@@ -1,5 +1,5 @@
 {
-    "path": "./plugins/",
+    "path": "https://github.com/Lumanis45/noble-community-repo/tree/main/plugins/",
     "app": [
         "tic-tac-toe-plugin",
         "terraria-plugin"
