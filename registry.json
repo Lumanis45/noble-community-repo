@@ -1,0 +1,17 @@
+{
+    "path": "./plugins/",
+    "app": [
+        "tic-tac-toe-plugin",
+        "terraria-plugin"
+    ],
+    "widget": [
+        "quick-capture-plugin",
+        "agenda-widget-plugin"
+    ],
+    "theme": [
+        "dock-customizer-plugin",
+        "yellow-top-dock-plugin",
+        "classic-menu-plugin",
+        "gruvbox-theme-plugin"
+    ]
+}

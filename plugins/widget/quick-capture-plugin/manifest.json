@@ -1,0 +1,11 @@
+{
+  "id": "quick-capture-plugin",
+  "name": "Quick Capture",
+  "description": "Community example: a floating box that creates a note instantly and can optionally add it to your To-Do list too — demonstrates writing to the shared notes store and to another extension's exposed task list.",
+  "version": "0.1.0",
+  "main": "plugin.js",
+  "icon": "plus",
+  "extType": "small",
+  "defaultEnabled": false,
+  "installs": 0
+}

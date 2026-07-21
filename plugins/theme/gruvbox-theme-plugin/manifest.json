@@ -1,0 +1,18 @@
+{
+  "id": "gruvbox-theme-plugin",
+  "name": "Gruvbox theme plugin",
+  "description": "Gruvbox theme",
+  "version": "0.1.0",
+  "main": "plugin.js",
+  "icon": "puzzle",
+  "extType": "theme",
+  "slot": "theme",
+  "components": [
+    "theme:color",
+    "theme:position",
+    "theme:layout"
+  ],
+  "defaultEnabled": false,
+  "top": true,
+  "installs": 1
+}

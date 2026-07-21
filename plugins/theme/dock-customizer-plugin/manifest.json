@@ -1,0 +1,14 @@
+{
+  "id": "dock-customizer-plugin",
+  "name": "Dock Customizer",
+  "description": "Community example: moves the dock, retints it, and pins a shortcut to prove extensions can restyle the engine's shell",
+  "version": "0.1.0",
+  "main": "plugin.js",
+  "icon": "puzzle",
+  "extType": "theme",
+  "slot": "theme",
+  "components": ["theme:color", "theme:position"],
+  "defaultEnabled": false,
+  "recommended": true,
+  "installs": 3100
+}

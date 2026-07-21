@@ -1,0 +1,11 @@
+{
+  "id": "agenda-widget-plugin",
+  "name": "Agenda",
+  "description": "Community example: a floating \"Today\" summary combining dates/times parsed from your notes with Calendar View's schedule and Quick Tags' tags — read entirely through api.data, never by touching another extension's storage.",
+  "version": "0.1.0",
+  "main": "plugin.js",
+  "icon": "calendar",
+  "extType": "small",
+  "defaultEnabled": false,
+  "installs": 0
+}
