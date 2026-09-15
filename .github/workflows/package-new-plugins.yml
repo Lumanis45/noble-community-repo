@@ -1,0 +1,68 @@
+name: Package new plugins
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "plugins/**"
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Package new plugin directories
+        shell: bash
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [[ "$BEFORE_SHA" == "0000000000000000000000000000000000000000" ]]; then
+            changed_files=$(git ls-tree -r --name-only "$AFTER_SHA" -- plugins/)
+          else
+            changed_files=$(git diff --name-only --diff-filter=A "$BEFORE_SHA" "$AFTER_SHA" -- plugins/)
+          fi
+
+          plugin_names=$(printf '%s\n' "$changed_files" \
+            | awk -F/ 'NF >= 2 && $1 == "plugins" { print $2 }' \
+            | sort -u)
+
+          if [[ -z "$plugin_names" ]]; then
+            echo "No new plugin directories found."
+            exit 0
+          fi
+
+          mkdir -p compressed
+
+          while IFS= read -r plugin_name; do
+            [[ -z "$plugin_name" ]] && continue
+            echo "Packaging plugins/$plugin_name"
+            tar -I zstd -cf "compressed/${plugin_name}.tar.zst" "plugins/${plugin_name}"
+          done <<< "$plugin_names"
+
+      - name: Commit generated archives
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "$(git status --porcelain -- compressed/)" ]]; then
+            echo "No archives to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add compressed/
+          git commit -m "chore: package new plugins"
+          git push
