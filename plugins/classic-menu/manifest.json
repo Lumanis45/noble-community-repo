@@ -1,0 +1,11 @@
+{
+  "id": "classic-menu",
+  "name": "Classic Menu",
+  "description": "Swaps the floating dock for a plain website-style hamburger dropdown.",
+  "version": "1.0.0",
+  "type": "theme",
+  "icon": "puzzle",
+  "parts": [
+    "position"
+  ]
+}

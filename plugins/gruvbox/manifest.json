@@ -1,0 +1,8 @@
+{
+  "id": "gruvbox",
+  "name": "Gruvbox",
+  "description": "The Gruvbox palette, applied across the app, the dock and the bottom bar.",
+  "version": "1.0.0",
+  "type": "theme",
+  "icon": "puzzle"
+}

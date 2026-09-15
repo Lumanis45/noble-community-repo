@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" width="480" height="300">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fb7185"/><stop offset="1" stop-color="#be123c"/>
+  </linearGradient></defs>
+  <rect width="480" height="300" fill="url(#g)"/>
+  <circle cx="410" cy="70" r="150" fill="#ffffff" opacity="0.08"/>
+  <circle cx="70" cy="270" r="110" fill="#000000" opacity="0.06"/>
+  <g transform="translate(300 40) scale(6.2)" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></g>
+  <text x="40" y="238" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="40" font-weight="700" fill="#ffffff">Focus Timer</text>
+  <text x="40" y="266" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="17" fill="#ffffff" opacity="0.82">Focus, break, repeat</text>
+</svg>

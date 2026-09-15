@@ -1,0 +1,15 @@
+{
+  "id": "calendar",
+  "name": "Calendar View",
+  "description": "A daily schedule that lives beside Notes. Fill in per-hour plans, and let the “From your notes” section surface any date or time you've typed into a note automatically — tap one to jump straight to its note. No double entry, ever.",
+  "version": "1.0.0",
+  "type": "app",
+  "icon": "calendar",
+  "author": "noble",
+  "avatar": "avatar.svg",
+  "screenshots": [
+    "cover.svg",
+    "shot.svg"
+  ],
+  "featured": true
+}

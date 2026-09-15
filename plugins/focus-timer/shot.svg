@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" width="480" height="300">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#be123c"/><stop offset="1" stop-color="#fb7185"/>
+  </linearGradient></defs>
+  <rect width="480" height="300" fill="url(#g)"/>
+  <rect x="70" y="60" width="340" height="180" rx="20" fill="#ffffff" opacity="0.96"/>
+  <g transform="translate(96 88) scale(1.6)" fill="none" stroke="#be123c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></g>
+  <text x="150" y="106" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Focus Timer</text>
+  <rect x="96" y="150" width="288" height="12" rx="6" fill="#e2e8f0"/>
+  <rect x="96" y="176" width="230" height="12" rx="6" fill="#e2e8f0"/>
+  <rect x="96" y="202" width="170" height="12" rx="6" fill="#fb7185" opacity="0.55"/>
+</svg>

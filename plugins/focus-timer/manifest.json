@@ -1,0 +1,15 @@
+{
+  "id": "focus-timer",
+  "name": "Focus Timer",
+  "description": "A Pomodoro timer that keeps you honest: alternating focus and break phases, a 15 / 25 / 50-minute picker, and a running count of the sessions you've finished. Any extension can start, pause, or reset it.",
+  "version": "1.0.0",
+  "type": "widget",
+  "icon": "clock",
+  "author": "noble",
+  "avatar": "avatar.svg",
+  "screenshots": [
+    "cover.svg",
+    "shot.svg"
+  ],
+  "featured": true
+}

@@ -1,13 +1,9 @@
 {
     "path": "https://github.com/Lumanis45/noble-community-repo/tree/main/plugins/",
     "plugins": [
-        "tic-tac-toe-plugin",
-        "terraria-plugin",
-        "quick-capture-plugin",
-        "agenda-widget-plugin",
-        "dock-customizer-plugin",
-        "yellow-top-dock-plugin",
-        "classic-menu-plugin",
-        "gruvbox-theme-plugin"
+        "calendar",
+        "classic-menu",
+        "focus-timer",
+        "gruvbox"
     ]
 }
