@@ -1,14 +1,10 @@
 {
     "path": "https://github.com/Lumanis45/noble-community-repo/tree/main/plugins/",
-    "app": [
+    "plugins": [
         "tic-tac-toe-plugin",
-        "terraria-plugin"
-    ],
-    "widget": [
+        "terraria-plugin",
         "quick-capture-plugin",
-        "agenda-widget-plugin"
-    ],
-    "theme": [
+        "agenda-widget-plugin",
         "dock-customizer-plugin",
         "yellow-top-dock-plugin",
         "classic-menu-plugin",
