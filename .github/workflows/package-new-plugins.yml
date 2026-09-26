@@ -1,11 +1,17 @@
 name: Package plugins
 
+# Реестра нет: расширение — это папка plugins/<id>/ с manifest.json.
+# Приложение находит папки само (через GitHub API), а этот workflow только
+# собирает для каждой архив compressed/<id>.tar.zst, чтобы расширение
+# скачивалось одним запросом, и удаляет архивы удалённых папок.
+
 on:
   push:
     branches:
       - main
     paths:
       - "plugins/**"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -31,27 +37,33 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [[ "$BEFORE_SHA" == "0000000000000000000000000000000000000000" ]]; then
+          if [[ -z "${BEFORE_SHA:-}" || "$BEFORE_SHA" == "0000000000000000000000000000000000000000" ]]; then
+            # Первый push или ручной запуск — пересобираем всё.
             changed_files=$(git ls-tree -r --name-only "$AFTER_SHA" -- plugins/)
           else
-            changed_files=$(git diff --name-only --diff-filter=AMR "$BEFORE_SHA" "$AFTER_SHA" -- plugins/)
-          fi
-
-          plugin_names=$(printf '%s\n' "$changed_files" \
-            | awk -F/ 'NF >= 2 && $1 == "plugins" { print $2 }' \
-            | sort -u)
-
-          if [[ -z "$plugin_names" ]]; then
-            echo "No plugin changes detected."
-            exit 0
+            changed_files=$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" -- plugins/)
           fi
 
           mkdir -p compressed
 
+          for archive in compressed/*.tar.zst; do
+            [[ -e "$archive" ]] || continue
+            plugin_name=$(basename "$archive" .tar.zst)
+            if [[ ! -f "plugins/$plugin_name/manifest.json" ]]; then
+              echo "Removing orphan $archive"
+              rm -f "$archive"
+            fi
+          done
+
+          plugin_names=$(printf '%s\n' "$changed_files" \
+            | awk -F/ 'NF >= 3 && $1 == "plugins" { print $2 }' \
+            | sort -u)
+
           while IFS= read -r plugin_name; do
             [[ -z "$plugin_name" ]] && continue
-            if [[ -d "plugins/$plugin_name" ]]; then
+            if [[ -f "plugins/$plugin_name/manifest.json" ]]; then
               echo "Packaging plugins/$plugin_name..."
+              # Содержимое папки без вложенного пути: manifest.json в корне архива.
               tar -I zstd -cf "compressed/${plugin_name}.tar.zst" -C "plugins/${plugin_name}" .
             fi
           done <<< "$plugin_names"
@@ -68,6 +80,6 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add compressed/
+          git add -A compressed/
           git commit -m "chore: package updated plugins [skip ci]"
           git push

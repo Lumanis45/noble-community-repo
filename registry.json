@@ -1,9 +1,0 @@
-{
-  "path": "https://github.com/Lumanis45/noble-community-repo/tree/main/plugins/",
-  "plugins": [
-    "calendar",
-    "classic-menu",
-    "focus-timer",
-    "gruvbox"
-  ]
-}
